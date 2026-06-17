@@ -92,6 +92,7 @@ const ui = {
     toggleRight: document.getElementById("toggle-right")
 };
 
+//행성의 속성과 공전 운동을 관리하는 클래스
 class Planet {
     constructor(data) {
         this.name = data.name;
