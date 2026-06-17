@@ -3,7 +3,7 @@ from typing import List, Optional, Tuple
 
 from .constants import DURATION, G, MAX_SUBSTEPS, OUTPUT_DT, SOFTENING, WORLD_LIMIT
 from .models import PredictRequest, PredictResponse
-from .planets import Planet, make_planets
+from .planets import CelestialBody, make_planets
 from .vector import Vec3, lerp
 
 
@@ -161,11 +161,11 @@ class AdaptiveSimulator(BaseSimulator):
 
 
 class CollisionManager:
-    def __init__(self, planets: List[Planet]):
+    def __init__(self, planets: List[CelestialBody]):
         self._planets = planets
 
     @property
-    def planets(self) -> List[Planet]:
+    def planets(self) -> List[CelestialBody]:
         return self._planets
 
     def check_collision(self, position: Vec3, t: float):
