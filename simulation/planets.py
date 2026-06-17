@@ -11,7 +11,7 @@ from .vector import Vec3
 
 
 @dataclass
-class Planet:
+class CelestialBody:
     name: str
     mass: float
     radius: float
@@ -115,7 +115,7 @@ def days_from_j2000(date_string: str):
     return (selected - j2000).total_seconds() / 86400
 
 
-def make_planets(request: PredictRequest) -> List[Planet]:
+def make_planets(request: PredictRequest) -> List[CelestialBody]:
     source = CUSTOM_PLANET_DATA if request.mode == "custom" else REAL_PLANET_DATA
     days = days_from_j2000(request.date)
     planets = []
@@ -132,7 +132,7 @@ def make_planets(request: PredictRequest) -> List[Planet]:
             data["angular_speed"] = angle_per_day * TIME_FLOW
             data["initial_angle"] = data["phase_at_epoch"] + angle_per_day * days
 
-        planet = Planet(**data)
+        planet = CelestialBody(**data)
         planet.mass_scale = request.mass_scales.get(planet.name, 1)
         planet.radius_scale = request.radius_scales.get(planet.name, 1)
 
