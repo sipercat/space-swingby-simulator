@@ -9,7 +9,7 @@ from .constants import CUSTOM_PLANET_DATA, ORBIT_DISTANCE_SCALE, REAL_PLANET_DAT
 from .models import PredictRequest
 from .vector import Vec3
 
-
+//행성을 화면에 표시하고 사용자와 상호작용하는 클래스
 @dataclass
 class Planet:
     name: str
